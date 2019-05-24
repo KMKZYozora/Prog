@@ -1,51 +1,55 @@
-﻿# ハードウェア制御
-    # シャットダウン
-    Stop-Computer -Force
+﻿# PowerShell
 
-    # 再起動
-    Restart-Computer -Force
+## ハードウェア制御
+    ### シャットダウン
+        Stop-Computer -Force
 
-# エクスプローラ
-    # フォルダ
+    ### 再起動
+        Restart-Computer -Force
+
+## エクスプローラ
+    ### フォルダ
         $Path3 = "D:\Users\Desktop/test"
         $Path1 = "$Path3/Folder"
         $Path2 = "$Path1`2"
-        # 生成
+        ### 生成
             New-Item -Path $Path1 -ItemType Directory -Force
-        # 名前変更
+
+        ### 名前変更
             Rename-Item -LiteralPath $Path1 -NewName $Path2
-        # 移動, リネーム
+
+        ### 移動, リネーム
             Move-Item　-LiteralPath $Path2 -Destination $Path1
-        # プロパティ 取得
+
+        ### プロパティ 取得
             $Time = (Get-ItemProperty -LiteralPath $Path1).LastWriteTime
-        # プロパティ 設定
+
+        ### プロパティ 設定
             Set-ItemProperty -Path $Path1
+            
         # 削除
             Remove-Item -LiteralPath $Path3 -Recurse
 
-    # テキストファイル
-        # 生成
+    ### テキストファイル
+
+        ### 生成
             New-Item -Path $Path1 -ItemType Directory -Force
             Out-File
-            # 名前変更
-                Rename-Item -LiteralPath $Path1 -NewName $Path2
-            # 移動, リネーム
-                Move-Item　-LiteralPath $Path2 -Destination $Path1
-            # 削除
-                Remove-Item -LiteralPath $Path3 -Recurse
+
+        ### 名前変更
+            Rename-Item -LiteralPath $Path1 -NewName $Path2
+
+        ### 移動, リネーム
+            Move-Item　-LiteralPath $Path2 -Destination $Path1
+
+        ### 削除
+            Remove-Item -LiteralPath $Path3 -Recurse
     
 
-    # 取得
-    Get-Item
-    Get-ChildItem
 
-    # 変更
-    # ファイルの移動
-    Move-Item
+## オブジェクト
+    ### Excel
+        New-Object -ComObject Excel.Application
 
-    # ファイル名の変更
-    Rename-Item
-
-# オブジェクト
-    # 取得
-    New-Object -ComObject
+    ### ウィンスクリプトシェル
+        New-Object -ComObject WScript.Shell
